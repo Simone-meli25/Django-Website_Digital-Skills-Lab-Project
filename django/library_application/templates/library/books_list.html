@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books List</title>
+    <link rel="stylesheet" href="{% static 'library/style.css' %}">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Books List</h1>
+        <ul class="book-list">
+            {% for book in books %}
+                <li>
+                    <a href="{% url 'book_detail' book.pk %}">{{ book.title }}</a>
+                    - <small>by {{ book.authors.all|join:", " }}</small>
+                </li>
+            {% empty %}
+                <li>No books available.</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'main' %}">Back to Main Menu</a>
+    </div>
+</body>
+</html>
+

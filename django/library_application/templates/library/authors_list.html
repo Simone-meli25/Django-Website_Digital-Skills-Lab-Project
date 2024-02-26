@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Authors List</title>
+    <link rel="stylesheet" href="{% static 'library/style.css' %}">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Authors List</h1>
+        <ul class="author-list">
+            {% for author in authors %}
+                <li>
+                    <a href="{% url 'author_detail' author.pk %}">{{ author.name }}</a>
+                </li>
+            {% empty %}
+                <li>No authors available.</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'main' %}">Back to Main Menu</a>
+    </div>
+</body>
+</html>
+

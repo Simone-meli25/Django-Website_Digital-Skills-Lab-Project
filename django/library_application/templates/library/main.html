@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Our Digital Library</title>
+    <link rel="stylesheet" href="{% static 'library/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Welcome to Our Digital Library</h1>
+            <p>Discover a world of knowledge and adventure. Whether you're looking for the latest bestsellers or exploring the works of classic authors, our library offers a wide range of books and resources for every reader.</p>
+        </header>
+
+        <section class="navigation">
+            <h2>Explore Our Collections</h2>
+            <div class="nav-links">
+                <a href="{% url 'books_list' %}" class="nav-link">Browse Books</a>
+                <a href="{% url 'authors_list' %}" class="nav-link">Meet the Authors</a>
+            </div>
+            <div class="content">
+                <img src="{% static 'library/images/picture-1.jpg' %}" alt="Library Image" class="book-cover">
+            </div>
+        </section>
+    </div>
+</body>
+</html>

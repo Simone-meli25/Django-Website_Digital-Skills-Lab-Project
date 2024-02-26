@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ author.name }}</title>
+    <link rel="stylesheet" href="{% static 'library/style.css' %}">
+
+</head>
+<body>
+    <div class="container">
+        <h1>{{ author.name }}</h1>
+        <div class="content">
+            {% if author.photo %}
+                <img src="{{ author.photo.url }}" alt="Photo of {{ author.name }}" class="author-photo">
+            {% endif %}
+            <p>{{ author.bio }}</p>
+            <h2>Books by {{ author.name }}:</h2>
+            <ul>
+                {% for book in author.books.all %}
+                    <li><a href="{% url 'book_detail' book.pk %}">{{ book.title }}</a></li>
+                {% empty %}
+                    <li>No books available for this author.</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <a href="{% url 'authors_list' %}">Back to Authors List</a>
+    </div>
+</body>
+</html>
